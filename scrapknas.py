@@ -32,8 +32,6 @@ def save(to, content):
             sort += 1
 
 
-print("opgeslagen als Gender_Wapen_Categorie bijv. H_F_S.csv")
-
 categories = {'D_F_S': 'https://knas.onzeranglijsten.net/pag/8094/rls/6844',
               'D_F_K': 'https://knas.onzeranglijsten.net/pag/8094/rls/b645',
               'D_F_B': 'https://knas.onzeranglijsten.net/pag/8094/rls/cb42',
@@ -47,7 +45,9 @@ categories = {'D_F_S': 'https://knas.onzeranglijsten.net/pag/8094/rls/6844',
               'H_F_C': 'https://knas.onzeranglijsten.net/pag/8094/rls/5e7d',
               'H_F_J': 'https://knas.onzeranglijsten.net/pag/8094/rls/f37a'}
 
-#  save_to = input("Oplaan als: ")
+
+print("opgeslagen als Gender_Wapen_Categorie bijv. H_F_S.csv")
+
 for cat in categories:
     response = requests.get(categories[cat], timeout=5)
     content = BeautifulSoup(response.content, "html.parser")
