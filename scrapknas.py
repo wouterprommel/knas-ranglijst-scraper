@@ -32,24 +32,24 @@ def save(to, content):
             sort += 1
 
 
-categories = {'D_F_S': 'https://knas.onzeranglijsten.net/pag/8094/rls/6844',
-              'D_F_K': 'https://knas.onzeranglijsten.net/pag/8094/rls/b645',
-              'D_F_B': 'https://knas.onzeranglijsten.net/pag/8094/rls/cb42',
-              'D_F_P': 'https://knas.onzeranglijsten.net/pag/8094/rls/1943',
-              'D_F_C': 'https://knas.onzeranglijsten.net/pag/8094/rls/ae40',
-              'D_F_J': 'https://knas.onzeranglijsten.net/pag/8094/rls/fc41',
-              'H_F_S': 'https://knas.onzeranglijsten.net/pag/8094/rls/3171',
-              'H_F_K': 'https://knas.onzeranglijsten.net/pag/8094/rls/ac7e',
-              'H_F_B': 'https://knas.onzeranglijsten.net/pag/8094/rls/fb7f',
-              'H_F_P': 'https://knas.onzeranglijsten.net/pag/8094/rls/107c',
-              'H_F_C': 'https://knas.onzeranglijsten.net/pag/8094/rls/5e7d',
-              'H_F_J': 'https://knas.onzeranglijsten.net/pag/8094/rls/f37a'}
-
-
 print("opgeslagen als Gender_Wapen_Categorie bijv. H_F_S.csv")
+q1 = input("Alles (y/n)")
+if (q1 == "y"):
+    alles = True
+elif (q1 == "n"):
+    q2 = input("wapen: (F/E/S) ")
+    q3 = input("gender: (M/F)")
+    q4 = input("leeftijd cat (jeugd/senioren/veteranen): ")
+else:
+    print("enter (y/n)")
+    raise SystemExit
 
-for cat in categories:
-    response = requests.get(categories[cat], timeout=5)
-    content = BeautifulSoup(response.content, "html.parser")
-    cat += '.csv'
-    save(cat, content)
+with open("categorien.csv", "r") as categorien:
+    for cat in categorien:
+        line = cat.rstrip().split(',')
+        parts = line[0].split('_')
+        if (alles or True):
+            response = requests.get(line[1], timeout=5)
+            content = BeautifulSoup(response.content, "html.parser")
+            line[0] += '.csv'
+            save(line[0], content)
