@@ -33,8 +33,9 @@ def save(to, content):
 
 
 print("opgeslagen als Gender_Wapen_Categorie bijv. H_F_S.csv")
-q1 = input("Alles (y/n)")
-if (q1 == "y"):
+alles = True;
+# q1 = input("Alles (y/n)")
+''' if (q1 == "y"):
     alles = True
 elif (q1 == "n"):
     q2 = input("wapen: (F/E/S) ")
@@ -43,6 +44,7 @@ elif (q1 == "n"):
 else:
     print("enter (y/n)")
     raise SystemExit
+'''
 
 with open("categorien.csv", "r") as categorien:
     for cat in categorien:
